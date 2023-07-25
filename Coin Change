@@ -1,0 +1,44 @@
+#include<stdio.h>
+int main()
+{
+    int coin,n,k,temp,count=0;
+    printf("Array Size : ");
+    scanf("%d",&n);
+    int a[n];
+    printf("Enter Types of coins available : ");
+    for ( int i = 0; i < n ; i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("Enter Total Coin : ");
+    scanf("%d",&coin);
+    for ( int i = 0 ; i < n ; i++)
+    {
+        for ( int j = 0 ; j < n ; j++)
+        {
+            if(a[i]>a[j])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    k=0;
+    while(k<n)
+    {
+        if(coin-a[k]>=0)
+        {
+            count+=1;
+            coin-=a[k];
+        }
+        if(coin-a[k]<0)
+            k++;
+    }
+    if(coin ==0)
+    {
+        printf("%d",count);
+    }
+    else
+        printf("-1");
+}
